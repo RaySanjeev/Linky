@@ -112,8 +112,10 @@ body {
 	align-items: center;
 }
 
-.btn {
-	/* display: block; */
+.join__btn {
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	padding: 1rem 3rem;
 	font-size: 1.5rem;
 	font-family: inherit;
@@ -131,13 +133,13 @@ body {
 	backface-visibility: hidden;
 }
 
-.btn:hover {
+.join__btn:hover {
 	transform: translateY(-4px);
 	box-shadow: 0 1.5rem 3rem rgba(0, 0, 0, 0.5);
 	background-color: #8959d1;
 }
 
-.btn:active {
+.join__btn:active {
 	transform: translateY(0);
 	box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.3);
 }
@@ -248,8 +250,8 @@ body {
 }
 
 .room__icon {
-	width: 2.5rem;
-	height: 2.5rem;
+	width: 2rem;
+	height: 2rem;
 	fill: var(--color-white);
 	margin-right: 1rem;
 }
@@ -386,4 +388,20 @@ body {
 	padding: 0.5rem 0.7rem;
 	text-transform: capitalize;
 	letter-spacing: 1px;
+}
+
+::-webkit-scrollbar {
+	width: 1rem;
+}
+
+::-webkit-scrollbar-track {
+	background: var(--color-text-disabled);
+}
+
+::-webkit-scrollbar-thumb {
+	background: var(--color-primary);
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: var(--color-primary-dark);
 }
