@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="./style.css" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" />
+		<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet" />
+		<title>Linky</title>
+	</head>
+	<body>
+		<section class="main">
+			<div class="login__box">
+				<div class="login__heading">
+					<h1 class="login__heading--text">
+						<svg class="icon">
+							<use xlink:href="sprite.svg#happy"></use>
+						</svg>
+						linky
+					</h1>
+				</div>
+
+				<form class="login__form" action="room.html">
+					<div class="form-control">
+						<label class="login__label" for="username">Username :</label>
+						<input type="text" name="username" id="username" placeholder="Enter Username..." required />
+					</div>
+					<div class="form-control">
+						<label class="login__label" for="room">Room :</label>
+						<select name="room" id="room">
+							<option value="JavaScript">JavaScript</option>
+							<option value="Python">Python</option>
+							<option value="PHP">PHP</option>
+							<option value="C#">C#</option>
+							<option value="Ruby">Ruby</option>
+							<option value="Java">Java</option>
+						</select>
+					</div>
+					<div class="login__btn">
+						<button type="submit" class="btn">Join Chat</button>
+					</div>
+				</form>
+			</div>
+		</section>
+	</body>
+</html>
