@@ -39,6 +39,7 @@ socket.on('centerMessage', (message) => {
 });
 
 socket.on('roomUsers', (users) => {
+  console.log(users);
   usersNameDOM.innerHTML = '';
   roomNameDOM.textContent = users.room;
 
