@@ -1,0 +1,55 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(http-equiv='X-UA-Compatible' content='IE=edge')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  link(rel='stylesheet' href='/style.css')
+  link(rel='preconnect' href='https://fonts.gstatic.com')
+  link(href='https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap' rel='stylesheet')
+  script(src='/socket.io/socket.io.js')
+  title Linky
+  section.room
+    .room__box
+      .room__header
+        .room__header--1
+          svg.login__icon
+            use(xlink:href='sprite.svg#happy')
+          h1.room__heading linky
+        p.header__name Sanjeev
+        .room__header--2
+          button.room__header--btn.leave__roomDOM
+            svg.room__icon
+              use(xlink:href='sprite.svg#logout')
+            |               leave room
+      .room__content
+        .room__content--display
+          .room__block
+            .room__name--heading
+              svg.room__icon
+                use(xlink:href='sprite.svg#chatting')
+              h1.room__title room name
+            p.room__name javascript
+          .room__users
+            .room__name--heading
+              .room__name--users
+                svg.room__icon
+                  use(xlink:href='sprite.svg#group')
+                h1.room__title users
+            .room__users--name
+        .room__content--messages
+          //
+            <div class="message__box">
+            <p class="owner__info">sachin 21:17</p>
+            <div class="message__content">
+            <p class="message">skskjfskjsfkjsdskjfkjfjskjkhs</p>
+            </div>
+            </div>
+            <p class="member__joined">rohit joined</p>
+      .room__message
+        input.message__input(type='text' placeholder='Enter Message Here...' name='message')
+        button.room__header--btn.message__submitDOM(type='submit')
+          svg.room__icon
+            use(xlink:href='sprite.svg#paper-plane')
+          |             send
+  script(src='https://cdnjs.cloudflare.com/ajax/libs/qs/6.9.2/qs.min.js' integrity='sha256-TDxXjkAUay70ae/QJBEpGKkpVslXaHHayklIVglFRT4=' crossorigin='anonymous')
+  script(src='/js/index.js')

@@ -5,6 +5,7 @@ const socketIo = require('socket.io');
 
 const usersProfile = require('./utils/users');
 const formatMessage = require('./utils/messages');
+const viewRouter = require('./routes/viewRoutes');
 
 const app = express();
 
@@ -13,11 +14,18 @@ const botName = 'ChatBot';
 // Set static folder
 app.use(express.static(path.join(__dirname, 'public')));
 
+// PUG FILES
+app.set('view engine', 'pug');
+app.set('views', path.join(__dirname, 'views'));
+
 // SERVER
 const PORT = process.env.PORT || 3000;
 const server = app.listen(PORT, () => {
   console.log(`Server is listening at port: ${PORT}`);
 });
+
+// ROUTES
+app.use('/', viewRouter);
 
 const io = socketIo(server);
 
@@ -36,6 +44,8 @@ io.on('connection', (socket) => {
       formatMessage(botName, 'Welcome to the Linky!!')
     );
 
+    socket.emit('currentUser', user.username);
+
     // EMIT TO EVERYONE EXCEPT THE USER
     socket.broadcast
       .to(user.room)
@@ -44,7 +54,6 @@ io.on('connection', (socket) => {
     // SEND USER INFO
     io.to(user.room).emit('roomUsers', {
       room: user.room,
-      currentUser: user.id,
       usersName: usersProfile.getRoomUsers(user.room),
     });
   });
@@ -72,7 +81,6 @@ io.on('connection', (socket) => {
       // SEND USER INFO
       io.to(user.room).emit('roomUsers', {
         room: user.room,
-        currentUser: user.id,
         usersName: usersProfile.getRoomUsers(user.room),
       });
     }

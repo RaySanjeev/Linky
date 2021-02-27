@@ -1,0 +1,33 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(http-equiv='X-UA-Compatible' content='IE=edge')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  link(rel='stylesheet' href='/style.css')
+  link(rel='preconnect' href='https://fonts.gstatic.com')
+  link(href='https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap' rel='stylesheet')
+  title Linky
+  section.main
+    .login__box
+      .login__heading
+        h1.login__heading--text
+          svg.icon
+            use(xlink:href='sprite.svg#happy')
+          | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;linky
+      form.login__form(action='/room')
+        .form-control
+          label.login__label(for='username') Username :
+          input#username(type='text' name='username' placeholder='Enter Username...' required='')
+        .form-control
+          label.login__label(for='room') Room :
+          select#room(name='room')
+            option(value='JavaScript') School
+            option(value='Python') College
+            option(value='PHP') Buddies
+            option(value='C#') Soccer
+            option(value='Ruby') Work
+        .login__btn
+          button.join__btn(type='submit')
+            svg.room__icon
+              use(xlink:href='sprite.svg#link')
+            | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;Join Chat

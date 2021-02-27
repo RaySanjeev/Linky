@@ -42,22 +42,14 @@ socket.on('roomUsers', (users) => {
   usersNameDOM.innerHTML = '';
   roomNameDOM.textContent = users.room;
 
-  const index = users.usersName.findIndex(
-    (user) => user.id === users.currentUser
-  );
+  users.usersName.forEach((user) => {
+    const el = `<p class="users--name">${user.username}</p>`;
+    usersNameDOM.insertAdjacentHTML('beforeend', el);
+  });
+});
 
-  if (index !== -1) {
-    const activeUser = users.usersName.splice(index, 1)[0];
-    console.log(activeUser);
-    currentUserDOM.textContent = activeUser.username;
-  }
-
-  if (users.usersName.length > 0) {
-    users.usersName.forEach((user) => {
-      const el = `<p class="users--name">${user.username}</p>`;
-      usersNameDOM.insertAdjacentHTML('beforeend', el);
-    });
-  }
+socket.on('currentUser', (userName) => {
+  document.querySelector('.header__name').textContent = userName;
 });
 
 const readEmitMsg = () => {
@@ -90,5 +82,5 @@ leaveRoomDOM.addEventListener('click', (e) => {
   e.preventDefault();
   const ans = confirm('Are you sure you want to leave the room ?');
 
-  if (ans) window.location.assign('/chat.html');
+  if (ans) window.location.assign('/');
 });
