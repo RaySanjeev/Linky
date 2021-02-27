@@ -8,6 +8,8 @@ const roomDOM = document.querySelector('.room');
 const leaveRoomDOM = document.querySelector('.leave__roomDOM');
 const currentUserDOM = document.querySelector('.currentUser');
 
+const audio = new Audio('../messageTone.mp3');
+
 // GET USERNAME AND ROOM FROM URL
 const { username, room } = Qs.parse(location.search, {
   ignoreQueryPrefix: true,
@@ -24,6 +26,7 @@ const outputMessage = (message) => {
 		<p class="message">${message.text}</p></div></div>`;
 
   messageBoxDOM.insertAdjacentHTML('beforeend', el);
+  if (message.position !== 'right') audio.play();
 };
 
 // JOIN CHATROOM
@@ -31,6 +34,9 @@ socket.emit('joinRoom', username, room);
 
 socket.on('message', (message) => {
   outputMessage(message);
+
+  // Scroll down
+  messageBoxDOM.scrollTop = messageBoxDOM.scrollHeight;
 });
 
 socket.on('centerMessage', (message) => {
@@ -39,7 +45,6 @@ socket.on('centerMessage', (message) => {
 });
 
 socket.on('roomUsers', (users) => {
-  console.log(users);
   usersNameDOM.innerHTML = '';
   roomNameDOM.textContent = users.room;
 
