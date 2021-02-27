@@ -1,94 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="stylesheet" href="./style.css" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" />
-		<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet" />
-		<title>Document</title>
-	</head>
-	<body>
-		<section class="room">
-			<div class="room__box">
-				<div class="room__header">
-					<div class="room__header--1">
-						<svg class="login__icon">
-							<use xlink:href="sprite.svg#happy"></use>
-						</svg>
-						<h1 class="room__heading">linky</h1>
-					</div>
-					<div class="room__header--2">
-						<button class="room__header--btn">
-							<svg class="room__icon">
-								<use xlink:href="sprite.svg#logout"></use>
-							</svg>
-							leave room
-						</button>
-					</div>
-				</div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <script src="/socket.io/socket.io.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <section class="room">
+      <div class="room__box">
+        <div class="room__header">
+          <div class="room__header--1">
+            <svg class="login__icon">
+              <use xlink:href="sprite.svg#happy"></use>
+            </svg>
+            <h1 class="room__heading">linky</h1>
+          </div>
+          <div class="room__header--2">
+            <button class="room__header--btn leave__roomDOM">
+              <svg class="room__icon">
+                <use xlink:href="sprite.svg#logout"></use>
+              </svg>
+              leave room
+            </button>
+          </div>
+        </div>
 
-				<div class="room__content">
-					<div class="room__content--display">
-						<div class="room__block">
-							<div class="room__name--heading">
-								<svg class="room__icon">
-									<use xlink:href="sprite.svg#chatting"></use>
-								</svg>
-								<h1 class="room__title">room name</h1>
-							</div>
-							<p class="room__name">javascript</p>
-						</div>
+        <div class="room__content">
+          <div class="room__content--display">
+            <div class="room__block">
+              <div class="room__name--heading">
+                <svg class="room__icon">
+                  <use xlink:href="sprite.svg#chatting"></use>
+                </svg>
+                <h1 class="room__title">room name</h1>
+              </div>
+              <p class="room__name">javascript</p>
+            </div>
 
-						<div class="room__users">
-							<div class="room__name--heading">
-								<div class="room__name--users">
-									<svg class="room__icon">
-										<use xlink:href="sprite.svg#group"></use>
-									</svg>
-									<h1 class="room__title">users</h1>
-								</div>
-							</div>
-							<div class="room__users--name">
-								<p class="users--name">Akshat</p>
-								<p class="users--name">sumeet</p>
-								<p class="users--name">subhash</p>
-								<p class="users--name">sanjeev</p>
-								<p class="users--name">sanjeev</p>
-								<p class="users--name">sanjeev</p>
-								<p class="users--name">sanjeev</p>
-								<p class="users--name">sanjeev</p>
-								<p class="users--name">sanjeev</p>
-								<p class="users--name">sanjeev</p>
-								<p class="users--name">sanjeev</p>
-								<p class="users--name">sanjeev</p>
-								<p class="users--name">sanjeev</p>
-								<p class="users--name">sanjeev</p>
-							</div>
-						</div>
-					</div>
-					<div class="room__content--messages">
-						<div class="message__box">
+            <div class="room__users">
+              <div class="room__name--heading">
+                <div class="room__name--users">
+                  <svg class="room__icon">
+                    <use xlink:href="sprite.svg#group"></use>
+                  </svg>
+                  <h1 class="room__title">users</h1>
+                </div>
+              </div>
+              <p class="users--name active currentUser">Akshat</p>
+              <div class="room__users--name">
+                <!-- <p class="users--name active currentUser">Akshat</p> -->
+              </div>
+            </div>
+          </div>
+          <div class="room__content--messages">
+            <!-- <div class="message__box">
 							<p class="owner__info">sachin 21:17</p>
 							<div class="message__content">
 								<p class="message">skskjfskjsfkjsdskjfkjfjskjkhs</p>
 							</div>
 						</div>
-						<p class="member__joined">rohit joined</p>
-					</div>
-				</div>
+						<p class="member__joined">rohit joined</p> -->
+          </div>
+        </div>
 
-				<div class="room__message">
-					<input type="text" placeholder="Enter Message Here..." class="message__input" name="message" />
-					<button class="room__header--btn" type="submit">
-						<svg class="room__icon">
-							<use xlink:href="sprite.svg#paper-plane"></use>
-						</svg>
-						send
-					</button>
-				</div>
-			</div>
-		</section>
-	</body>
+        <div class="room__message">
+          <input
+            type="text"
+            placeholder="Enter Message Here..."
+            class="message__input"
+            name="message"
+          />
+          <button class="room__header--btn message__submitDOM" type="submit">
+            <svg class="room__icon">
+              <use xlink:href="sprite.svg#paper-plane"></use>
+            </svg>
+            send
+          </button>
+        </div>
+      </div>
+    </section>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.9.2/qs.min.js"
+      integrity="sha256-TDxXjkAUay70ae/QJBEpGKkpVslXaHHayklIVglFRT4="
+      crossorigin="anonymous"
+    ></script>
+    <script src="/js/index.js"></script>
+  </body>
 </html>
