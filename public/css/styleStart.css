@@ -23,6 +23,24 @@ html {
   font-weight: 400;
 }
 
+@media only screen and (max-width: 1000px) {
+  html {
+    font-size: 50%; /* 1rem = 8px */
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  html {
+    font-size: 37.5%; /* 1rem = 6px */
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  html {
+    font-size: 31.25%;
+  }
+}
+
 body {
   box-sizing: border-box;
 }
@@ -172,7 +190,7 @@ body {
 
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 11% 76% 13%;
+  grid-template-rows: 12% 75% 13%;
 }
 
 .room__header {
@@ -258,6 +276,12 @@ body {
     var(--color-primary)
   );
   padding: 2rem;
+}
+
+@media only screen and (max-width: 700px) {
+  .room__content--display {
+    padding: 1rem;
+  }
 }
 
 .room__content--messages {
