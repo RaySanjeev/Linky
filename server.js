@@ -2,6 +2,7 @@ const path = require('path');
 
 const express = require('express');
 const socketIo = require('socket.io');
+const compression = require('compression');
 
 const usersProfile = require('./utils/users');
 const formatMessage = require('./utils/messages');
@@ -10,6 +11,8 @@ const viewRouter = require('./routes/viewRoutes');
 const app = express();
 
 const botName = 'ChatBot';
+
+app.use(compression());
 
 // Set static folder
 app.use(express.static(path.join(__dirname, 'public')));
